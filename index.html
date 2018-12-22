@@ -26,18 +26,37 @@
   </head>
   <body>
     <div class="container">
-      <div class="row"><h1>Word Guessing Game</h1></div>
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center mb-2 border-bottom">Word Guessing Game</h1>
+        </div>
+      </div>
+      <div class="row"><!--insert the gamediv here--></div>
+
       <div class="row">
         <!--
           I want a Play button and a Quit Button
           Quit is disabled to start, Play is enabled
         -->
-        <button id="play-button" type="button" class="btn btn-primary" value="play">
-          Play
-        </button>
-        <button id="quit-button" type="button" class="btn btn-primary" value="quit" disabled>
-          Quit
-        </button>
+        <div class="col-12 text-center">
+          <button
+            id="play-button"
+            type="button"
+            class="btn btn-primary"
+            value="play"
+          >
+            Play
+          </button>
+          <button
+            id="quit-button"
+            type="button"
+            class="btn btn-primary"
+            value="quit"
+            disabled
+          >
+            Quit
+          </button>
+        </div>
       </div>
     </div>
 
