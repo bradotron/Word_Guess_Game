@@ -39,7 +39,7 @@ var guessedLetters = [];
 var wordProgress = "";
 
 // this will be my random word list:
-var wordList = ["potato", "tomato", "pizza", "carrots", "pie", "fudge", "coke"];
+var wordList = ["potato", "tomato", "pizza", "carrots", "pie", "fudge", "coke", "ghost"];
 
 // this executes when the play button is pressed. it enters the webpage into the play game state
 // essentially a reset button
@@ -65,22 +65,23 @@ function quitGame(e) {
   resetGame();
 }
 
-function startGame() {
-  // set the lives and wins
+function setVariableDefaults() {
   numLives = 5;
   numWins = 0;
   numGuesses = 0;
   guessedLetters = [];
+}
+
+function startGame() {
+  // set the lives and wins
+  setVariableDefaults();
   userMessage = "Guess the word by typing letters..."
   // get a random word
   myWord = getWord();
 }
 
 function resetGame() {
-  numWins = 0;
-  numLives = 5;
-  myWord = "";
-  guessedLetters = [];
+  setVariableDefaults();
 
   // disable the play button and enable the quit button
   playBtn.disabled = false;
@@ -102,9 +103,6 @@ function updateScreen() {
   else {
     //console.log("carry on");
   }
-
-
-
 
   userPrompt.textContent = userMessage;
   livesDisplay.textContent = numLives;
@@ -189,12 +187,95 @@ function updateGuessedLetters() {
 }
 
 function keyUp(e) {
-  //console.log("user pressed: " + e.key );
-  userGuess(e.key);
+  var keyCode = e.keyCode;
+  // keyCode map
+  switch(keyCode) {
+    case 65:
+    userGuess("a");
+    break;
+    case 66:
+    userGuess("b");
+    break;
+    case 67:
+    userGuess("c");
+    break;
+    case 68:
+    userGuess("d");
+    break;
+    case 69:
+    userGuess("e");
+    break;
+    case 70:
+    userGuess("f");
+    break;
+    case 71:
+    userGuess("g");
+    break;
+    case 72:
+    userGuess("h");
+    break;
+    case 73:
+    userGuess("i");
+    break;
+    case 74:
+    userGuess("j");
+    break;
+    case 75:
+    userGuess("k");
+    break;
+    case 76:
+    userGuess("l");
+    break;
+    case 77:
+    userGuess("m");
+    break;
+    case 78:
+    userGuess("n");
+    break;
+    case 79:
+    userGuess("o");
+    break;
+    case 80:
+    userGuess("p");
+    break;
+    case 81:
+    userGuess("q");
+    break;
+    case 82:
+    userGuess("r");
+    break;
+    case 83:
+    userGuess("s");
+    break;
+    case 84:
+    userGuess("t");
+    break;
+    case 85:
+    userGuess("u");
+    break;
+    case 86:
+    userGuess("v");
+    break;
+    case 87:
+    userGuess("w");
+    break;
+    case 88:
+    userGuess("x");
+    break;
+    case 89:
+    userGuess("y");
+    break;
+    case 90:
+    userGuess("z");
+    break;
+
+    default:
+    // not a letter guess; do nothing
+  }
 }
 
 function userGuess(letter) {
-  if (isLetter(letter) && !(isGuessed(letter))) {
+  if (!(isGuessed(letter))) {
     guessedLetters.push(letter);
 
     if (goodGuess(letter)) {
@@ -217,19 +298,6 @@ function goodGuess(letter) {
 
   for (var i = 0; i < myWord.length; i++) {
     if (letter == myWord[i]) {
-      myReturn = true;
-    }
-  }
-
-  return myReturn;
-}
-
-function isLetter(letter) {
-  var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  var myReturn = false;
-
-  for (var i = 0; i < letters.length; i++) {
-    if (letter == letters[i]) {
       myReturn = true;
     }
   }
