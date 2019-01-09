@@ -19,12 +19,15 @@
   <title>The Guessing Game</title>
 
   <style>
-    body, html {
-      height: 100%;
+    /* adding this to the body will center the game in the viewport */
+    body {
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      min-height: 100vh;
     }
 
     .bg-img {
-            
       background-image: url("assets/background.jpg");
 
       background-repeat: no-repeat;
@@ -35,7 +38,7 @@
 </head>
 
 <body class="bg-img">
-  <div class="container border border-2 mt-5 mb-2 w-50 bg-dark text-light">
+  <div class="container border border-2 mb-2 bg-dark text-light">
     <div class="row pb-1 mb-3 border-bottom">
       <div class="col-12">
         <h1 class="text-center">Word Guessing Game</h1>
