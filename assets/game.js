@@ -14,11 +14,13 @@ quitBtn.addEventListener("click", quitGame);
 var userPrompt = document.getElementById("user-prompt");
 var livesDisplay = document.getElementById("lives-display");
 var winsDisplay = document.getElementById("wins-display");
+var lossesDisplay = document.getElementById("losses-display");
 var wordDisplay = document.getElementById("word-display");
 var lettersGuessed = document.getElementById("letters-guessed");
 
-// global variable to track the number of wins
+// global variable to track the number of wins and losses
 var numWins = 0;
+var numLosses = 0;
 
 // tracks the lives, if lives = 0, user loses
 var numLives = 0;
@@ -39,7 +41,16 @@ var guessedLetters = [];
 var wordProgress = "";
 
 // this will be my random word list:
-var wordList = ["potato", "tomato", "pizza", "carrots", "pie", "fudge", "coke", "ghost"];
+var wordList = [
+  "potato",
+  "tomato",
+  "pizza",
+  "carrots",
+  "pie",
+  "fudge",
+  "coke",
+  "ghost"
+];
 
 // this executes when the play button is pressed. it enters the webpage into the play game state
 // essentially a reset button
@@ -67,7 +78,7 @@ function quitGame(e) {
 
 function setVariableDefaults() {
   numLives = 5;
-  numWins = 0;
+  //numWins = 0;
   numGuesses = 0;
   guessedLetters = [];
 }
@@ -75,7 +86,7 @@ function setVariableDefaults() {
 function startGame() {
   // set the lives and wins
   setVariableDefaults();
-  userMessage = "Guess the word by typing letters..."
+  userMessage = "Guess the word by typing letters...";
   // get a random word
   myWord = getWord();
 }
@@ -93,20 +104,10 @@ function resetGame() {
 }
 
 function updateScreen() {
-
-  if (checkWin()) {
-    userWins();
-  }
-  else if (numLives <= 0) {
-    gameOver();
-  }
-  else {
-    //console.log("carry on");
-  }
-
   userPrompt.textContent = userMessage;
   livesDisplay.textContent = numLives;
   winsDisplay.textContent = numWins;
+  lossesDisplay.textContent = numLosses;
 
   // update the word progress
   wordDisplay.textContent = updateWordProgress();
@@ -114,15 +115,13 @@ function updateScreen() {
   lettersGuessed.textContent = updateGuessedLetters();
 }
 
-
 function updateWordProgress() {
   var myText = "";
 
   for (var i = 0; i < myWord.length; i++) {
     if (isGuessed(myWord[i])) {
       myText += myWord[i] + " ";
-    }
-    else {
+    } else {
       myText += "_ ";
     }
   }
@@ -139,17 +138,14 @@ function checkWin() {
   for (var i = 0; i < myWord.length; i++) {
     if (isGuessed(myWord[i])) {
       checking.push(true);
-    }
-    else {
+    } else {
       checking.push(false);
     }
   }
 
   for (var i = 0; i < checking.length; i++) {
     if (checking[i]) {
-
-    }
-    else {
+    } else {
       myReturn = false;
     }
   }
@@ -169,9 +165,9 @@ function userWins() {
 }
 
 function gameOver() {
-  console.log("game over");
-  userMessage = "Game Over! Press Play to start again!"
-
+  //console.log("game over");
+  userMessage = "Game Over! Press Play to start again!";
+  numLosses++;
   // disable the play button and enable the quit button
   playBtn.disabled = false;
   quitBtn.disabled = true;
@@ -189,85 +185,85 @@ function updateGuessedLetters() {
 function keyUp(e) {
   var keyCode = e.keyCode;
   // keyCode map
-  switch(keyCode) {
+  switch (keyCode) {
     case 65:
-    userGuess("a");
-    break;
+      userGuess("a");
+      break;
     case 66:
-    userGuess("b");
-    break;
+      userGuess("b");
+      break;
     case 67:
-    userGuess("c");
-    break;
+      userGuess("c");
+      break;
     case 68:
-    userGuess("d");
-    break;
+      userGuess("d");
+      break;
     case 69:
-    userGuess("e");
-    break;
+      userGuess("e");
+      break;
     case 70:
-    userGuess("f");
-    break;
+      userGuess("f");
+      break;
     case 71:
-    userGuess("g");
-    break;
+      userGuess("g");
+      break;
     case 72:
-    userGuess("h");
-    break;
+      userGuess("h");
+      break;
     case 73:
-    userGuess("i");
-    break;
+      userGuess("i");
+      break;
     case 74:
-    userGuess("j");
-    break;
+      userGuess("j");
+      break;
     case 75:
-    userGuess("k");
-    break;
+      userGuess("k");
+      break;
     case 76:
-    userGuess("l");
-    break;
+      userGuess("l");
+      break;
     case 77:
-    userGuess("m");
-    break;
+      userGuess("m");
+      break;
     case 78:
-    userGuess("n");
-    break;
+      userGuess("n");
+      break;
     case 79:
-    userGuess("o");
-    break;
+      userGuess("o");
+      break;
     case 80:
-    userGuess("p");
-    break;
+      userGuess("p");
+      break;
     case 81:
-    userGuess("q");
-    break;
+      userGuess("q");
+      break;
     case 82:
-    userGuess("r");
-    break;
+      userGuess("r");
+      break;
     case 83:
-    userGuess("s");
-    break;
+      userGuess("s");
+      break;
     case 84:
-    userGuess("t");
-    break;
+      userGuess("t");
+      break;
     case 85:
-    userGuess("u");
-    break;
+      userGuess("u");
+      break;
     case 86:
-    userGuess("v");
-    break;
+      userGuess("v");
+      break;
     case 87:
-    userGuess("w");
-    break;
+      userGuess("w");
+      break;
     case 88:
-    userGuess("x");
-    break;
+      userGuess("x");
+      break;
     case 89:
-    userGuess("y");
-    break;
+      userGuess("y");
+      break;
     case 90:
-    userGuess("z");
-    break;
+      userGuess("z");
+      break;
 
     default:
     // not a letter guess; do nothing
@@ -275,20 +271,25 @@ function keyUp(e) {
 }
 
 function userGuess(letter) {
-  if (!(isGuessed(letter))) {
+  if (!isGuessed(letter)) {
     guessedLetters.push(letter);
 
     if (goodGuess(letter)) {
       userMessage = "Good guess, keep it up!";
-    }
-    else {
+    } else {
       userMessage = "Woops, keep trying!";
       numLives -= 1;
     }
 
+    if (checkWin()) {
+      userWins();
+    } else if (numLives <= 0) {
+      gameOver();
+    } else {
+      //console.log("carry on");
+    }
     updateScreen();
-  }
-  else {
+  } else {
     // console.log("invalid guess");
   }
 }
@@ -314,7 +315,7 @@ function isGuessed(letter) {
     }
   }
 
-  return myReturn
+  return myReturn;
 }
 
 function getWord() {
