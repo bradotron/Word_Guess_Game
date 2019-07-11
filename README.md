@@ -7,9 +7,17 @@ As the user makes guesses, the user will lose one life for each incorrect guess 
 [Deployed App](https://bradotron.github.io/Word_Guess_Game/)
 
 
-
-
 # Current Issues List
 1. Add a losses tracker
 2. Make the game more responsive and mobile friendly
 3. Use my own css, remove the bootstrap
+
+# File Structure
+```
+|-- projectRoot
+    |-- index.html
+    |-- README.md
+    |-- assets
+        |-- background.jpg
+        |-- game.js
+```
